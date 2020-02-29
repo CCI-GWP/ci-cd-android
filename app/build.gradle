@@ -15,9 +15,9 @@ android {
     signingConfigs {
         release {
             keyAlias 'key0'
-            keyPassword 'Password4'
+            keyPassword 'keyPassword'
             storeFile file('./KeyStore')
-            storePassword 'Password4'
+            storePassword 'storePassword'
         }
     }
     compileSdkVersion 29
