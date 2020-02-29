@@ -17,7 +17,7 @@ android {
             keyAlias 'key0'
             keyPassword 'keyPassword'
             storeFile file('./KeyStore')
-            storePassword 'storePassword'
+            storePassword 'keyPassword'
         }
     }
     compileSdkVersion 29
