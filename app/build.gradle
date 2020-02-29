@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 ext.versionMajor = 1
 ext.versionMinor = 0
-ext.versionPatch = 3
+ext.versionPatch = 1
 ext.versionClassifier = null
 ext.isSnapShot = false
 ext.minSdkVersion = 21
@@ -16,7 +16,7 @@ android {
         release {
             keyAlias 'key0'
             keyPassword 'Password4'
-            storeFile file('../Untitled')
+            storeFile file('./KeyStore')
             storePassword 'Password4'
         }
     }
