@@ -1,2 +1,2 @@
 json_key_file "fastlane/api.json" # Path to the json secret file - Follow https://github.com/fastlane/supply#setup to get one
-package_name "com.cicdandroid.app" # e.g. com.krausefx.app
+package_name "com.cicdandroid.com" # e.g. com.krausefx.app

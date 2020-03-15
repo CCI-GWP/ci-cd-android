@@ -35,13 +35,19 @@ platform :android do
   end
 
   desc "Deploy a new version to the Google Play"
-  lane :playstore do
-    gradle(
-      task: 'bundle',
-      build_type: 'Release'
-    )
-    upload_to_play_store skip_upload_apk:true # Uploads the APK built in the gradle step above and releases it to all production users
+  lane :deploy do
+    gradle(task: "assembleRelease")
+    supply
   end
+
+  desc "Deploy a new version to the Google Play"
+    lane :playstore do
+      gradle(
+         task: 'bundle',
+         build_type: 'Release'
+       )
+      upload_to_play_store skip_upload_apk:true
+    end
 
   # You can define as many lanes as you want
 

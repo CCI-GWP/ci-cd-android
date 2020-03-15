@@ -11,22 +11,43 @@ ext.versionClassifier = null
 ext.isSnapShot = false
 ext.minSdkVersion = 21
 
+private Integer generateVersionCode() {
+    return ext.minSdkVersion * 10000000 + ext.versionMajor * 10000 +
+            ext.versionMinor * 100 + ext.versionPatch
+}
+
+private String generateVersionName() {
+    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
+
+    if (ext.versionClassifier == null) {
+        if (ext.isSnapShot) {
+            ext.versionClassifier = "SNAPSHOT"
+        }
+    }
+
+    if (ext.versionClassifier != null) {
+        versionName += "-" + ext.versionClassifer
+    }
+
+    return versionName
+}
+
 android {
     signingConfigs {
         release {
             keyAlias 'key0'
             keyPassword 'keyPassword'
             storeFile file('../Keystore')
-            storePassword 'keyPassword'
+            storePassword 'storePassword'
         }
     }
     compileSdkVersion 29
     defaultConfig {
-        applicationId "dev.idee.cicdandroid"
-        minSdkVersion 21
-        targetSdkVersion 29
         versionName generateVersionName()
         versionCode generateVersionCode()
+        applicationId "com.cicdandroid.com"
+        minSdkVersion 21
+        targetSdkVersion 29
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', "API_KEY", API_KEY
 
@@ -71,23 +92,3 @@ dependencies {
 
 }
 
-private Integer generateVersionCode() {
-    return ext.minSdkVersion * 10000000 + ext.versionMajor * 10000 +
-            ext.versionMinor * 100 + ext.versionPatch
-}
-
-private String generateVersionName() {
-    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
-
-    if (ext.versionClassifier == null) {
-        if (ext.isSnapShot) {
-            ext.versionClassifier = "SNAPSHOT"
-        }
-    }
-
-    if (ext.versionClassifier != null) {
-        versionName += "-" + ext.versionClassifer
-    }
-
-    return versionName
-}
