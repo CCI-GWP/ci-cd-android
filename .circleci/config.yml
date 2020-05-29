@@ -16,4 +16,5 @@ jobs:
           command: bundle install
       - run:
           name: Execute Fastlane
-          command: bundle exec fastlane playstore
+          command: echo "Push to playstore"
+#           command: bundle exec fastlane playstore
